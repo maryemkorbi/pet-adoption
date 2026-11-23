@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Shelter extends Model
 {
@@ -12,4 +13,9 @@ class Shelter extends Model
         'phone',
         'email',
     ];
+
+    public function animals(): HasMany
+    {
+        return $this->hasMany(Animal::class);
+    }
 }
