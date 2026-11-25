@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AdoptionRequest;
 use App\Models\Animal;
 use App\Models\Shelter;
 use App\Models\User;
@@ -12,13 +13,8 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -28,5 +24,12 @@ class DatabaseSeeder extends Seeder
 
         Animal::factory(20)->create(fn () => ['shelter_id' => $shelters->random()->id]);
         Animal::factory(5)->adopted()->create(fn () => ['shelter_id' => $shelters->random()->id]);
+
+        Animal::available()->inRandomOrder()->take(4)->get()->each(function (Animal $animal) {
+            AdoptionRequest::factory()->create(['animal_id' => $animal->id]);
+
+            $animal->status = 'reserved';
+            $animal->save();
+        });
     }
 }
