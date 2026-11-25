@@ -27,5 +27,5 @@
         @endforelse
     </div>
 
-    {{ $animals->links('pagination::default') }}
+    {{ $animals->links('pagination::bootstrap-3') }}
 @endsection
