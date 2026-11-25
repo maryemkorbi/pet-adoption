@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Animal extends Model
 {
+    use HasFactory;
+    
     public const SPECIES = ['cat', 'dog', 'rabbit', 'bird', 'other'];
 
     public const GENDERS = ['male', 'female'];
