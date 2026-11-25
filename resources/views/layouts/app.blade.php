@@ -33,6 +33,7 @@
         <a class="logo" href="{{ route('animals.index') }}">Pet Adoption</a>
         <nav>
             <a href="{{ route('animals.index') }}">Animals</a>
+            <a href="{{ route('shelters.index') }}">Shelters</a>
             <a class="button" href="{{ route('animals.create') }}">+ Add an animal</a>
         </nav>
     </header>
